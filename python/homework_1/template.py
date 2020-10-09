@@ -150,12 +150,12 @@ def t13(number_1, number_2):
 
 def t14(string):
     a={ '+':   'Plus ', '-':   'Minus ', '*':   'Times ', '/':   'Divided By ', '**':  'To The Power Of ', '=':   'Equals ', '!=':  'Does Not Equal ' }
-        b={'10': 'Ten ', '9': 'Nine ','8': 'Eight ','7': 'Seven ','6': 'Six ','5': 'Five ','4': 'Four ','3': 'Three ','2': 'Two ','1': 'One ', '0': 'Zero '}
-        a.update(b)
-        c=string.split()
-        for i in range(len(c)):
-            c[i]=a[c[i]]
-        return ''.join(c).strip()
+    b={'10': 'Ten ', '9': 'Nine ','8': 'Eight ','7': 'Seven ','6': 'Six ','5': 'Five ','4': 'Four ','3': 'Three ','2': 'Two ','1': 'One ', '0': 'Zero '}
+    a.update(b)
+    c=string.split()
+    for i in range(len(c)):
+        c[i]=a[c[i]]
+    return ''.join(c).strip()
     pass
 
 
