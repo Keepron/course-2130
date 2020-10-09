@@ -113,9 +113,12 @@ def t10(string):
 
 
 def t11(lst):
-    for i in range(len(lst)-2):
-        if lst[i]==lst[i+2]:
-            return i+1
+    a=0
+    b=sum(lst)
+    for i in range(len(lst)):
+        a=a+lst[i]
+        if a-lst[i]==(b-lst[i])/2:
+            return i
     return -1
     pass
 
