@@ -121,17 +121,19 @@ def t11(lst):
 
 import re
 def t12(lst):
-    a=re.findall(r'\+?\d[\( -]?\d{3}[\) -]?\d{3}[ -]?\d{2}[ -]?\d{2}',lst)
-    for i in range(len(a)):
-        a[i]=a[i].replace(' ','')
-        a[i]=a[i].replace("-","")
-        a[i]=a[i].replace("+","")
-        a[i]=a[i].replace(")","")
-        a[i]=a[i].replace("(","")
-        if len(a[i])==11:
-            a[i]='8'+a[i][1::]
-        else: a[i]='8'+a[i]
-    return a
+    b=[]
+    for i in range(len(lst)):
+        a=''.join(re.findall(r'\+?\d[\( -]?\d{3}[\) -]?\d{3}[ -]?\d{2}[ -]?\d{2}',lst[i]))
+        a=a.replace(' ','')
+        a=a.replace("-","")
+        a=a.replace("+","")
+        a=a.replace(")","")
+        a=a.replace("(","")
+        if len(a)==11:
+            a='8'+a[1::]
+        else: a='8'+a
+        b.append(a)
+    return b
     pass
 
 
