@@ -1,177 +1,164 @@
-"""
-    Ваша задача дописать функции, чтобы они проходили все тесты
-
-    Именование функций проиходит по шаблону: `t{number_of_task}`. Пожалуйста не меняйте эти имена.
-
-    Разрешается использовать только стандартные библиотеки языка.
-"""
-
 
 def t1(number):
-    """
-    Поправьте код что бы возвращаемое значение было ближайшим сверху, кратным к 20
-
-    Пример: number=21 тогда нужно вернуть 40
-    Пример: -5 -> 0
-
-    """
+    if number%20!=0: a = (number // 20 + 1) * 20
+    else: a=number
+    return a
     pass
 
 
 def t2(string):
-    """
-    На вход подается набор слов разделенных пробелом, инвертируйте каждое слово.
-
-    Пример: `abc abc abc` -> `cba cba cba`
-    """
+    b = string.split()
+    for i in range(len(b)): b[i]=b[i][::-1]
+    c=' '.join(b)
+    return c
     pass
 
 
 def t3(dictionary):
-    """
-    На вход подается словарь. Преорбазуйте его в строку по следующему шаблону 'key: value; key: value' и так далее
-
-    """
+    a=list(f'{value}: {key}' for value, key in dictionary.items())
+    b='; '.join(a)
+    return b
     pass
 
 
 def t4(string, sub_string):
-    """
-    проверить есть ли в строке инвертированная подстрока
-    """
+    a=sub_string[::-1] 
+    b=string.find(a)
+    return -1!=b
     pass
 
 
 def t5(strings):
-    """
-    На вход подается список строк,
-    Отфильтруйте список строк, оставив только строки в формате: `x y z x*y*z`, где x,y,z - целые положительные числа
-    """
+    a=strings
+    c=[]
+    for i in range(len(a)): 
+        if a[i].replace(' ','').isdigit()==1 and len(a[i].split())==4 and int(a[i].split()[3])==int(a[i].split()[0])*int(a[i].split()[1])*int(a[i].split()[2]):
+            c.append(a[i])
+    return c
     pass
 
 
 def t6(string):
-    """
-    Предположим у вас есть строки содержащие `#` символ, который означает backspace (удаление предыдущего) обработаете
-        такие строки
-
-    "abc#d##c"      ==>  "ac"
-    "abc##d######"  ==>  ""
-    "#######"       ==>  ""
-    ""              ==>  ""
-    """
+    for i in range(string.count("#")): 
+        a=string.find("#") 
+        if a==0: string=string[1::]
+        elif a==-1: return string
+        else: string=string[0:a-1:]+string[a+1::]
+    return string
     pass
 
 
 def t7(lst):
-    """
-    На вход подается список элементов, найдите сумму уникальных элементов списка.
-
-    Например: [4,5,7,5,4,8] -> 15 потому что 7 и 8 уникальны
-    """
+    new=[]
+    for i in range(len(lst)): 
+        for j in range(len(lst)): 
+            if i!=j and lst[i]==lst[j]: break
+        else: new.append(lst[i])
+    return sum(new)
     pass
 
 
 def t8(string):
-    """
-    Найдите все последовательности числев в строке и среди них найдите максимальное число
-
-    gh12cdy695m1 -> 695
-    """
+    new=[]
+    num=''
+    for i in range(len(string)): 
+        if string[i].isdigit()==1: num=num+string[i]
+        else:
+            if num!='':
+                new.append(int(num))
+                num=''
+    if num!='': 
+        new.append(int(num))
+    return new
     pass
 
 
 def t9(number):
-    """
-    Приведите число number к пятизначному виду.
-
-    Т.е. для числа 5 верните `00005`
-    """
+    a=list(str(number))
+    if len(a)>4:
+        return ''.join(a)
+    else:
+        for i in range(5-len(a)):
+            a=['0']+a
+    return ''.join(a)
     pass
 
 
 def t10(string):
-    """
-    Произведите смешивание цветов. Вам будет дана строка, необходимо смешать все пары цветов и вернуть результируюший
-        цвет
-
-    Комбинации цветов:    G G     B G    R G   B R
-    Результирующий цвет:   G       R      B     G
-
-    R R G B R G B B  <- ввод
-     R B R G B R B
-      G G B R G G
-       G R G B G
-        B B R R
-         B G R
-          R B
-           G  <-- вывод
-
-    """
+    b = string.split()
+    c=len(b)
+    if c==1:
+        return ''.join(b)
+    for i in range(c):
+        d=len(b)
+        for j in range(d-1):
+            if (b[j]=='B' and b[j+1]=='R') or (b[j+1]=='B' and b[j]=='R'):
+                b[j]='G'
+            elif (b[j]=='R' and b[j+1]=='G') or (b[j+1]=='R' and b[j]=='G'):
+                b[j]='B'
+            elif (b[j]=='G' and b[j+1]=='B') or (b[j+1]=='G' and b[j]=='B'):
+                b[j]='R'
+        if len(b)>1: b=b[0:-1:]
+        else: return ''.join(b)
+    return ''.join(b)
     pass
 
 
 def t11(lst):
-    """
-    Вам дам список из целых чисел. Найдите индекс числа такого, что левая и правая части списка от него равны
-        Если такого элемента нет - верните -1. Если вы нашли два элемента -> верните тот, который левее.
-    [1,2,3,5,3,2,1] = 3
-    [1,12,3,3,6,3,1] = 2
-    [10,20,30,40] = -1
-    """
+    for i in range(len(lst)-2):
+        if lst[i]==lst[i+2]:
+            return i+1
+    return -1
     pass
 
-
+import re
 def t12(lst):
-    """
-    На вход подается список строк вида `Что-то происходит бла бла бла +7495 123-45-67` содержащие номер телефона.
-        Используя regex выражения запишите всевозможноые комбинации телефонов, например программа должна корректно
-        работать с 790112345678 или 890112345678
-    Вход: [`Что-то происходит бла бла бла +7495 123-45-67`]
-    Выход: [`84951234567`]
-
-    """
+    a=re.findall(r'\+?\d[\( -]?\d{3}[\) -]?\d{3}[ -]?\d{2}[ -]?\d{2}',lst)
+    for i in range(len(a)):
+        a[i]=a[i].replace(' ','')
+        a[i]=a[i].replace("-","")
+        a[i]=a[i].replace("+","")
+        a[i]=a[i].replace(")","")
+        a[i]=a[i].replace("(","")
+        if len(a[i])==11:
+            a[i]='8'+a[i][1::]
+        else: a[i]='8'+a[i]
+    return a
     pass
 
 
 def t13(number_1, number_2):
-    """
-    Сложите два числа по элементно:
-        248
-       +208
-        4416
-    """
+    a=list(str(number_1))
+    b=list(str(number_2))
+    c=''
+    for i in range(max(len(a),len(b))-min(len(a),len(b))):
+        if len(a)>len(b): b=['0']+b
+        else: a=['0']+a
+    for i in range(len(a)):
+        c=c+str(int(a[i])+int(b[i]))
+    return int(c)
     pass
 
 
 def t14(string):
-    """
-    Преобразуйте математическое выражение (символьное) в буквенное выраэение
-
-    Для операций используйте следующую таблицу
-        { '+':   'Plus ',
-          '-':   'Minus ',
-          '*':   'Times ',
-          '/':   'Divided By ',
-          '**':  'To The Power Of ',
-          '=':   'Equals ',
-          '!=':  'Does Not Equal ' }
-    Примеры:
-        4 ** 9 -> Four To The Power Of Nine
-        10 - 5 -> Ten Minus Five
-        2 = 2  -> Two Equals Two
-    """
+    a={ '+':   'Plus ', '-':   'Minus ', '*':   'Times ', '/':   'Divided By ', '**':  'To The Power Of ', '=':   'Equals ', '!=':  'Does Not Equal ' }
+        b={'10': 'Ten ', '9': 'Nine ','8': 'Eight ','7': 'Seven ','6': 'Six ','5': 'Five ','4': 'Four ','3': 'Three ','2': 'Two ','1': 'One ', '0': 'Zero '}
+        a.update(b)
+        c=string.split()
+        for i in range(len(c)):
+            c[i]=a[c[i]]
+        return ''.join(c).strip()
     pass
 
 
 def t15(lst):
-    """
-    Найдите сумму элементов на диагоналях
-
-    [[ 1, 2, 3 ],
-    [ 4, 5, 6 ],
-    [ 7, 8, 9 ]]
-    Результат: 30
-    """
+    a=0
+    if len(lst)==len(lst[0]):
+        for i in range(len(lst)): 
+            a=a+lst[i][i]+lst[i][-i-1]
+    else:
+        for i in range(min(len(lst),len(lst[0]))):
+            a=a+lst[i][i]+lst[len(lst)-1-i][i]
+    return a
     pass
 
