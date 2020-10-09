@@ -175,3 +175,4 @@ def t15(lst):
     return a
     pass
 
+"""усе"""
