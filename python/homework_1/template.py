@@ -77,7 +77,7 @@ def t8(string):
                 num=''
     if num!='': 
         new.append(int(num))
-    return new
+    return max(new)
     pass
 
 
@@ -93,7 +93,7 @@ def t9(number):
 
 
 def t10(string):
-    b = string.split()
+    b = list(string)
     c=len(b)
     if c==1:
         return ''.join(b)
