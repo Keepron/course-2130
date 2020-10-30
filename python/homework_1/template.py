@@ -11,59 +11,66 @@ def t1(number):
     if number%20!=0: a = (number // 20 + 1) * 20
     else: a=number
     return a
-    pass
+    
 
 
 def t2(string):
     b = string.split()
-    for i in range(len(b)): b[i]=b[i][::-1]
+    for i in range(len(b)): 
+        b[i]=b[i][::-1]
     c=' '.join(b)
     return c
-    pass
+    
 
 
 def t3(dictionary):
     a=list(f'{value}: {key}' for value, key in dictionary.items())
     b='; '.join(a)
     return b
-    pass
+    
 
 
 def t4(string, sub_string):
     a=sub_string[::-1] 
     b=string.find(a)
     return -1!=b
-    pass
+    
 
 
 def t5(strings):
     a=strings
     c=[]
     for i in range(len(a)): 
-        if a[i].replace(' ','').isdigit()==1 and len(a[i].split())==4 and int(a[i].split()[3])==int(a[i].split()[0])*int(a[i].split()[1])*int(a[i].split()[2]):
+        d=a[i].split()
+        if a[i].replace(' ','').isdigit()==1 and len(d)==4 and int(d[3])==int(d[0])*int(d[1])*int(d[2]):
             c.append(a[i])
     return c
-    pass
+    
 
 
 def t6(string):
     for i in range(string.count("#")): 
         a=string.find("#") 
-        if a==0: string=string[1::]
-        elif a==-1: return string
-        else: string=string[0:a-1:]+string[a+1::]
+        if a==0: 
+            string=string[1::]
+        elif a==-1: 
+            return string
+        else: 
+            string=string[0:a-1:]+string[a+1::]
     return string
-    pass
+    
 
 
 def t7(lst):
     new=[]
     for i in range(len(lst)): 
         for j in range(len(lst)): 
-            if i!=j and lst[i]==lst[j]: break
-        else: new.append(lst[i])
+            if i!=j and lst[i]==lst[j]: 
+                break
+        else: 
+            new.append(lst[i])
     return sum(new)
-    pass
+    
 
 
 def t8(string):
@@ -78,7 +85,7 @@ def t8(string):
     if num!='': 
         new.append(int(num))
     return max(new)
-    pass
+    
 
 
 def t9(number):
@@ -89,7 +96,7 @@ def t9(number):
         for i in range(5-len(a)):
             a=['0']+a
     return ''.join(a)
-    pass
+    
 
 
 def t10(string):
@@ -106,10 +113,12 @@ def t10(string):
                 b[j]='B'
             elif (b[j]=='G' and b[j+1]=='B') or (b[j+1]=='G' and b[j]=='B'):
                 b[j]='R'
-        if len(b)>1: b=b[0:-1:]
-        else: return ''.join(b)
+        if len(b)>1: 
+            b=b[0:-1:]
+        else: 
+            return ''.join(b)
     return ''.join(b)
-    pass
+    
 
 
 def t11(lst):
@@ -120,7 +129,7 @@ def t11(lst):
         if a-lst[i]==(b-lst[i])/2:
             return i
     return -1
-    pass
+    
 
 import re
 def t12(lst):
@@ -137,7 +146,7 @@ def t12(lst):
         else: a='8'+a
         b.append(a)
     return b
-    pass
+    
 
 
 def t13(number_1, number_2):
@@ -150,7 +159,7 @@ def t13(number_1, number_2):
     for i in range(len(a)):
         c=c+str(int(a[i])+int(b[i]))
     return int(c)
-    pass
+    
 
 
 def t14(string):
@@ -161,7 +170,7 @@ def t14(string):
     for i in range(len(c)):
         c[i]=a[c[i]]
     return ''.join(c).strip()
-    pass
+    
 
 
 def t15(lst):
@@ -173,6 +182,6 @@ def t15(lst):
         for i in range(min(len(lst),len(lst[0]))):
             a=a+lst[i][i]+lst[len(lst)-1-i][i]
     return a
-    pass
+    
 
 """усе"""
